@@ -1,0 +1,11 @@
+{
+  "name": "wayhome",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm --prefix frontend test",
+    "dev": "npm --prefix frontend run dev --",
+    "build": "npm --prefix frontend run build -- --outDir ../dist --emptyOutDir",
+    "preview": "npm --prefix frontend run preview -- --outDir ../dist"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "framer-motion": "^11.11.0",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.441.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "description": "WayHome \u2014 Online Real Estate & Student Accommodation Management System (frontend)",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
+  },
+  "name": "wayhome-frontend",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "test": "node --test src/utils/*.test.js"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}

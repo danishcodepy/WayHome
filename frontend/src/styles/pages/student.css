@@ -1,0 +1,268 @@
+.student-hero {
+  height:380px;
+  background:#f3f6fb;
+  position:relative;
+  overflow:hidden
+}
+
+.student-hero .hero-photo {
+  left:46%
+}
+
+.student-hero .hero-photo-blend {
+  background:linear-gradient(90deg,#f3f6fb 0%,#f3f6fb 31%,#f3f6fbe6 41%,#f3f6fb00 67%)
+}
+
+.student-hero .hero-inner {
+  padding-top:49px
+}
+
+.student-hero h1 {
+  font-size:45px;
+  letter-spacing:-1.9px;
+  line-height:1.14;
+  margin-bottom:18px
+}
+
+.student-hero .hero-copy p {
+  font-size:14px;
+  max-width:430px
+}
+
+.university-search {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  position:relative;
+  margin-top:24px;
+  max-width:575px;
+  background:white;
+  border:1px solid #e4e7ed;
+  border-radius:9px;
+  padding:8px 8px 8px 16px;
+  box-shadow:0 8px 20px #0b1f3a0c
+}
+
+.university-search>svg {
+  color:var(--muted)
+}
+
+.university-search input {
+  width:100%;
+  border:0;
+  outline:0;
+  font-size:12px;
+  background:transparent
+}
+
+.university-search .navy-button {
+  min-height:37px;
+  font-size:var(--font-meta);
+  padding:8px 22px
+}
+
+.university-suggestions {
+  position:absolute;
+  z-index:20;
+  left:0;
+  right:0;
+  top:100%;
+  background:white;
+  box-shadow:0 8px 20px #0b1f3a16;
+  border:1px solid var(--line);
+  border-radius:9px;
+  max-height:250px;
+  overflow:auto
+}
+
+.university-suggestions button {
+  width:100%;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-align:left;
+  padding:13px;
+  background:white;
+  border-bottom:1px solid #f1f3f7;
+  font-size:12px
+}
+
+.university-suggestions button:hover {
+  background:var(--accent-soft)
+}
+
+.university-suggestions small {
+  margin-left:auto;
+  color:var(--subtle)
+}
+
+.campus-floating {
+  position:absolute;
+  right:64px;
+  top:44px;
+  background:#ffffffed;
+  padding:17px 20px;
+  border-radius:9px;
+  box-shadow:0 8px 25px #0b1f3a0e;
+  display:grid;
+  gap:12px;
+  font-size:var(--font-meta);
+  color:var(--text)
+}
+
+.campus-floating>span {
+  display:flex;
+  gap:9px;
+  align-items:center
+}
+
+.campus-floating svg {
+  color:#4b7435
+}
+
+.popular-universities {
+  padding-top:26px;
+  padding-bottom:30px
+}
+
+.popular-universities>h2 {
+  font-family:Inter,sans-serif;
+  font-size:12px;
+  letter-spacing:0;
+  font-weight:600;
+  margin-bottom:14px
+}
+
+.uni-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:13px
+}
+
+.university-card {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:15px;
+  text-align:left;
+  box-shadow:0 4px 12px #0b1f3a03
+}
+
+.university-card:hover,.university-card.university-card--selected {
+  border-color:#9bbdfa;
+  background:#f8fbff
+}
+
+.university-icon {
+  background:#eef3fb;
+  color:#2550a2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:40px;
+  clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);
+  flex-shrink:0
+}
+
+.university-card:nth-child(2) .university-icon {
+  background:#f1eafa;
+  color:#805aa3
+}
+
+.university-card:nth-child(3) .university-icon {
+  background:#fdecec;
+  color:#c96262
+}
+
+.university-card:nth-child(5) .university-icon {
+  background:#fdf0e4;
+  color:#ac6a37
+}
+
+.university-card strong {
+  font-size:var(--font-meta);
+  font-weight:600;
+  display:block
+}
+
+.university-card small {
+  font-size:var(--font-meta);
+  color:var(--subtle);
+  display:block
+}
+
+.student-controls {
+  background:#f7f9fc;
+  border-top:1px solid #e9edf3;
+  padding-top:28px;
+  padding-bottom:48px
+}
+
+.university-path {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  padding-bottom:24px
+}
+
+.university-path label {
+  font-size:var(--font-meta);
+  color:var(--muted)
+}
+
+.university-path select {
+  width:100%;
+  display:block;
+  border:1px solid #e1e7ee;
+  background:white;
+  border-radius:7px;
+  margin-top:5px;
+  padding:10px 12px;
+  font-size:12px
+}
+
+.student-results-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:7px 0 20px;
+  gap:12px
+}
+
+.student-results-heading h2 {
+  font-size:22px
+}
+
+.student-results-heading p {
+  font-size:var(--font-meta);
+  color:var(--muted);
+  margin-top:5px
+}
+
+.student-filter-row {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:23px
+}
+
+.student-filter-row select {
+  font-size:var(--font-meta);
+  background:white;
+  border:1px solid #e0e6ef;
+  border-radius:7px;
+  padding:9px 14px;
+  min-width:135px
+}
+
+.student-filter-row>button {
+  font-size:var(--font-meta);
+  background:none;
+  color:var(--accent);
+  margin-left:auto
+}
+

@@ -1,0 +1,230 @@
+.chat-page {
+  height:calc(100vh - 72px);
+  background:var(--soft);
+  padding:28px
+}
+
+.chat-shell {
+  max-width:1220px;
+  height:100%;
+  margin:auto;
+  border:1px solid #e0e6ef;
+  border-radius:12px;
+  display:grid;
+  grid-template-columns:300px minmax(0,1fr);
+  overflow:hidden;
+  background:white
+}
+
+.chat-list {
+  border-right:1px solid #e9edf3;
+  overflow-y:auto
+}
+
+.chat-list h1 {
+  font-size:22px;
+  padding:24px
+}
+
+.chat-list>button {
+  display:flex;
+  gap:12px;
+  width:100%;
+  text-align:left;
+  background:white;
+  padding:18px;
+  border-bottom:1px solid #edf0f4
+}
+
+.chat-list>button.active {
+  background:#eff5ff
+}
+
+.chat-list>button strong {
+  font-size:12px;
+  color:var(--text);
+  display:block
+}
+
+.chat-list>button p {
+  font-size:var(--font-meta);
+  color:var(--subtle);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  max-width:180px
+}
+
+.chat-conversation {
+  display:flex;
+  flex-direction:column;
+  min-width:0
+}
+
+.chat-person {
+  display:flex;
+  gap:12px;
+  padding:20px 24px;
+  border-bottom:1px solid #edf0f4;
+  align-items:center
+}
+
+.chat-person h2 {
+  font-size:15px
+}
+
+.chat-person p {
+  font-size:var(--font-meta);
+  color:var(--subtle)
+}
+
+.chat-history {
+  flex:1;
+  overflow:auto;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  background:#fafbfd
+}
+
+.chat-bubble {
+  font-size:12px;
+  color:var(--text);
+  line-height:1.7;
+  align-self:flex-start;
+  max-width:75%;
+  background:white;
+  border:1px solid #e5ebf4;
+  border-radius:10px 10px 10px 0;
+  padding:12px 15px
+}
+
+.chat-bubble.mine {
+  align-self:flex-end;
+  background:var(--accent);
+  color:white;
+  border-color:var(--accent);
+  border-radius:10px 10px 0 10px
+}
+
+.chat-bubble small {
+  display:block;
+  font-size:var(--font-meta);
+  opacity:.65;
+  margin-top:5px
+}
+
+.chat-compose {
+  display:flex;
+  gap:12px;
+  padding:18px 24px;
+  border-top:1px solid #e5ebf3
+}
+
+.chat-compose input {
+  flex:1;
+  border:1px solid #e1e7f0;
+  border-radius:7px;
+  padding:10px 13px;
+  font-size:12px;
+  min-width:0
+}
+
+.chat-back {
+  display:none
+}
+
+.compare-tray {
+  max-width:calc(100vw - 24px)
+}
+
+.compare-tray>div {
+  padding:10px 12px;
+  border-radius:10px;
+  gap:8px
+}
+
+.compare-tray p {
+  font-size:var(--font-meta)
+}
+
+.compare-tray a {
+  padding:8px 11px;
+  font-size:var(--font-meta);
+  border-radius:6px
+}
+
+.compare-tray button {
+  font-size:var(--font-meta)
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display:none
+}
+
+.no-scrollbar {
+  scrollbar-width:none
+}
+
+.animate-fade-up {
+  animation:fade-up .5s ease-out both
+}
+
+.glass {
+  background:#fffffff2;
+  border:1px solid #e5e7eb;
+  backdrop-filter:blur(12px)
+}
+
+@keyframes fade-up {
+  from {
+  opacity:0;
+  transform:translateY(18px)
+}
+to {
+  opacity:1;
+  transform:translateY(0)
+}
+
+}
+
+@keyframes pulse {
+  50% {
+  opacity:.5
+}
+
+}
+
+.admin-panels .rounded-3xl {
+  border-radius:12px
+}
+
+.admin-panels .shadow-sm {
+  box-shadow:none
+}
+
+.admin-panels h3 {
+  font-size:16px
+}
+
+.admin-panels .text-4xl {
+  font-size:27px
+}
+
+.admin-panels table {
+  font-size:var(--font-meta)
+}
+
+.admin-panels th,.admin-panels td {
+  padding:14px 17px
+}
+
+.admin-panels .text-sm {
+  font-size:12px
+}
+
+.admin-panels .text-xs {
+  font-size:var(--font-meta)
+}
+

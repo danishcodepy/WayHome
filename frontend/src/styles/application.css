@@ -1,0 +1,21 @@
+@import './tokens.css';
+@import './base.css';
+@import './navigation.css';
+@import './pages/home.css';
+@import './cards.css';
+@import './pages/properties.css';
+@import './pages/student.css';
+@import './maps.css';
+@import './pages/details.css';
+@import './forms.css';
+@import './pages/dashboard.css';
+@import './pages/wizard.css';
+@import './utilities.css';
+@import './responsive.css';
+@import './components.css';
+@import './polish-responsive.css';
+@import './reference.css';
+
+@import './motion.css';
+
+@import './assistant.css';

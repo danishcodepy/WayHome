@@ -1,0 +1,38 @@
+# ── Frontend ───────────────────────────────────────────────────────────────
+node_modules/
+dist/
+.sites-runtime/
+*.tsbuildinfo
+
+# ── Environment / Secrets (never commit real secrets) ──────────────────────
+.env
+.env.*
+!.env.example
+*.secret
+*.pem
+*.key
+*.p12
+*.jks
+*.pfx
+
+# ── Backend build artifacts ─────────────────────────────────────────────────
+backend/target/
+*.jar
+*.war
+*.class
+
+# ── IDE files ──────────────────────────────────────────────────────────────
+.idea/
+*.iml
+.vscode/
+*.suo
+*.user
+
+# ── OS junk ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ───────────────────────────────────────────────────────────────────
+*.log
+logs/

@@ -1,0 +1,266 @@
+@font-face {
+  font-family:Inter;
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+  src:url('/assets/fonts/inter-400.woff2') format('woff2')
+}
+
+@font-face {
+  font-family:Inter;
+  font-style:normal;
+  font-weight:500;
+  font-display:swap;
+  src:url('/assets/fonts/inter-500.woff2') format('woff2')
+}
+
+@font-face {
+  font-family:Inter;
+  font-style:normal;
+  font-weight:600;
+  font-display:swap;
+  src:url('/assets/fonts/inter-600.woff2') format('woff2')
+}
+
+@font-face {
+  font-family:Inter;
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+  src:url('/assets/fonts/inter-700.woff2') format('woff2')
+}
+
+@font-face {
+  font-family:Manrope;
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+  src:url('/assets/fonts/manrope-700.ttf') format('truetype')
+}
+
+@font-face {
+  font-family:Manrope;
+  font-style:normal;
+  font-weight:800;
+  font-display:swap;
+  src:url('/assets/fonts/manrope-800.ttf') format('truetype')
+}
+
+* {
+  box-sizing:border-box
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:96px
+}
+
+body {
+  margin:0;
+  background:var(--surface);
+  color:var(--ink);
+  font-family:Inter,sans-serif;
+  font-size:14px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased
+}
+
+h1,h2,h3,h4 {
+  font-family:Manrope,Inter,sans-serif;
+  font-weight:800;
+  letter-spacing:-.035em;
+  line-height:1.25
+}
+
+h1 {
+  font-size:34px
+}
+
+h2 {
+  font-size:30px
+}
+
+h3 {
+  font-size:18px
+}
+
+button,input,select,textarea {
+  font:inherit
+}
+
+button,a {
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent
+}
+
+button {
+  cursor:pointer
+}
+
+button:disabled {
+  opacity:.5;
+  cursor:not-allowed
+}
+
+input,select,textarea {
+  min-width:0
+}
+
+input[type=checkbox],input[type=radio],input[type=range] {
+  accent-color:var(--accent)
+}
+
+:focus-visible {
+  outline:2px solid var(--accent);
+  outline-offset:3px
+}
+
+::selection {
+  background:#dbeafe
+}
+
+img {
+  max-width:100%;
+  display:block
+}
+
+a,button {
+  transition:color .18s,background .18s,box-shadow .18s,border-color .18s
+}
+
+svg {
+  flex-shrink:0
+}
+
+p {
+  margin:0
+}
+
+a {
+  color:inherit
+}
+
+button {
+  border:0
+}
+
+button[aria-pressed=true] {
+  outline-offset:3px
+}
+
+.page-width {
+  width:100%;
+  max-width:1440px;
+  margin-inline:auto;
+  padding-inline:64px
+}
+
+.eyebrow,.section-kicker {
+  font-size:var(--font-meta);
+  letter-spacing:.2em;
+  font-weight:700;
+  color:#536078;
+  display:block;
+  margin-bottom:14px
+}
+
+.primary-button,.navy-button,.outline-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.5;
+  min-height:43px;
+  padding:11px 20px;
+  border:1px solid transparent;
+  border-radius:8px;
+  text-decoration:none;
+  white-space:nowrap
+}
+
+.primary-button {
+  color:var(--surface);
+  background:var(--accent);
+  box-shadow:0 2px 3px #155eef14
+}
+
+.primary-button:hover {
+  background:var(--accent-hover)
+}
+
+.navy-button {
+  background:var(--navy);
+  color:var(--surface)
+}
+
+.navy-button:hover {
+  background:#173b64
+}
+
+.outline-button {
+  background:var(--surface);
+  border-color:#d0d5dd;
+  color:var(--text)
+}
+
+.outline-button:hover {
+  border-color:var(--subtle);
+  background:#f9fafb
+}
+
+.text-link {
+  color:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  font-weight:600
+}
+
+.text-link:hover {
+  text-decoration:underline
+}
+
+.muted {
+  color:var(--muted)
+}
+
+.sample-note {
+  font-size:var(--font-meta);
+  color:var(--subtle);
+  margin-top:24px
+}
+
+.skip-link {
+  position:fixed;
+  top:-80px;
+  left:16px;
+  background:var(--navy);
+  color:white;
+  padding:12px;
+  z-index:9999
+}
+
+.skip-link:focus {
+  top:10px
+}
+
+.round-control {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border:1px solid var(--line);
+  background:white;
+  border-radius:8px;
+  color:#475467
+}
+
+.round-control:hover {
+  background:#f1f5f9;
+  color:var(--accent)
+}
+

@@ -1,0 +1,15 @@
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Image, ShieldCheck } from 'lucide-react';
+import Modal from './Modal';
+
+export default function PropertyGallery({ property, student=false }) {
+  const images=[...new Set([property.image,...(property.images||[])].filter(Boolean))];
+  const [index,setIndex]=useState(0), [open,setOpen]=useState(false), touch=useRef(null);
+  const move=direction=>setIndex(current=>(current+direction+images.length)%images.length);
+  const key=event=>{ if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();move(event.key==='ArrowLeft'?-1:1);} };
+  useEffect(()=>{if(!open)return; document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key);},[open,images.length]);
+  const swipe={onTouchStart:event=>{touch.current={x:event.touches[0].clientX,y:event.touches[0].clientY};},onTouchEnd:event=>{if(!touch.current)return;const dx=event.changedTouches[0].clientX-touch.current.x,dy=event.changedTouches[0].clientY-touch.current.y;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))move(dx<0?1:-1);touch.current=null;}};
+  const controls=<><button type="button" className="gallery-arrow prev" aria-label="Previous photo" onClick={()=>move(-1)}><ChevronLeft size={18}/></button><button type="button" className="gallery-arrow next" aria-label="Next photo" onClick={()=>move(1)}><ChevronRight size={18}/></button></>;
+  return <div className="property-gallery"><div className="detail-gallery-main" onKeyDown={key} {...swipe} tabIndex={0} role="region" aria-label="Property photos, use left and right arrows"><AnimatePresence initial={false}><motion.img key={images[index]} src={images[index]} alt={`${property.name}, photo ${index+1}`} initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:.22}}/></AnimatePresence><span className={`photo-tag ${property.verified?'verified':'student-tag'}`}><ShieldCheck size={12}/>{property.verified?'Verified Property':student?'Student Accommodation':property.type}</span>{images.length>1&&controls}<span className="gallery-counter" aria-live="polite">{index+1} / {images.length}</span><button className="gallery-open" onClick={()=>setOpen(true)}><Image size={14}/>View photos</button></div>{images.length>1&&<div className="gallery-thumbnails">{images.map((image,i)=><button className={i===index?'gallery-thumb--active':''} aria-label={`View photo ${i+1}`} aria-pressed={i===index} key={image} onClick={()=>setIndex(i)}><img src={image} alt=""/></button>)}</div>}<Modal open={open} label={`${property.name} photo gallery`} onClose={()=>setOpen(false)} className="gallery-modal"><div className="fullscreen-gallery" {...swipe}><AnimatePresence initial={false}><motion.img key={images[index]} src={images[index]} alt={`${property.name}, photo ${index+1}`} initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:.2}}/></AnimatePresence>{images.length>1&&controls}</div><p className="gallery-caption" aria-live="polite">{property.name}<span>{index+1} / {images.length}</span></p></Modal></div>;
+}
