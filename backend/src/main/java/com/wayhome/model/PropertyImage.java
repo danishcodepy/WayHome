@@ -17,5 +17,7 @@ public class PropertyImage {
     @JoinColumn(name = "property_id", nullable = false)
     private Property property;
 
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String imageUrl;
 }

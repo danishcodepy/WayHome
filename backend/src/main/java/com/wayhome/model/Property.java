@@ -43,6 +43,8 @@ public class Property {
     private String furnishing;
     private Double deposit;
     private Double maintenance;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String imageUrl;
     private Double latitude;
     private Double longitude;

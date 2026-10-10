@@ -25,9 +25,13 @@ public class StudentAccommodation {
     private Double rentMonthly;
     private String roomType;
     private String furnishing;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String imageUrl;
     private Double latitude;
     private Double longitude;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
     private Double rating;
     private Integer reviewCount;

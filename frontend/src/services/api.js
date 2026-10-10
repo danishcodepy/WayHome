@@ -311,9 +311,9 @@ export const api = {
   },
   getOwnerProperties: async () => {
     const user = currentUser();
-    const res = await request(`/properties/owner/${user?.id}`);
-    if (res) return res.map(normalizeProperty);
-    return readDemo('properties', properties).filter(p => p.ownerEmail === user?.email || p.owner === user?.name || (user?.email === 'rohit.sharma@example.com' && p.owner === 'Rohit Sharma')).map(normalizeProperty);
+    const ownerId = user?.id ?? user?.userId;
+    const res = await request(ownerId ? `/properties/owner/${ownerId}` : '/properties/owner');
+    return Array.isArray(res) ? res.map(normalizeProperty) : [];
   },
   getAdminProperties: async () => {
     const res = await request('/admin/properties');
@@ -323,11 +323,9 @@ export const api = {
   createProperty: async data => {
     const user = currentUser();
     const payload = mapPropertyPayload(data);
-    const res = await request(`/properties?ownerId=${encodeURIComponent(user?.id || '')}`, { method: 'POST', body: JSON.stringify(payload) }).catch(() => null);
-    if (res && res.id) return normalizeProperty(res);
-    const p = normalizeProperty({ ...data, id: `p-${Date.now()}`, status: 'Pending', verified: false });
-    writeDemo('properties', [p, ...readDemo('properties', properties)]);
-    return p;
+    const ownerId = user?.id ?? user?.userId ?? '';
+    const res = await request(`/properties?ownerId=${encodeURIComponent(ownerId)}`, { method: 'POST', body: JSON.stringify(payload) });
+    return normalizeProperty(res);
   },
   updateProperty: async (id, patch) => {
     const payload = mapPropertyPatch(patch);
@@ -535,7 +533,7 @@ export const api = {
 
   register: async data => {
     const res = await request('/auth/register', { method: 'POST', body: JSON.stringify(data) });
-    return res ? { ...res, role: normalizeRole(res.role) } : { ok: true };
+    return res ? { ...res, id: res.userId, role: normalizeRole(res.role) } : { ok: true };
   },
 
   /** Send a login OTP to the given email. */

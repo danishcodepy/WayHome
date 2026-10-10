@@ -32,7 +32,9 @@ public class AuthService {
         otpService.verifyRegistrationOtp(email, req.getOtp());
         Role role;
         try {
-            role = Role.valueOf(req.getRole().trim().replace(' ', '_').toUpperCase());
+            String roleStr = req.getRole().trim().replace(' ', '_').toUpperCase();
+            if ("PROPERTY_OWNER".equals(roleStr)) roleStr = "PROPERTY_MANAGER";
+            role = Role.valueOf(roleStr);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Invalid role: " + req.getRole());
         }
@@ -61,6 +63,7 @@ public class AuthService {
         }
         if (req.getRole() != null && !req.getRole().isBlank()) {
             String requestedRole = req.getRole().trim().replace(' ', '_').toUpperCase();
+            if ("PROPERTY_OWNER".equals(requestedRole)) requestedRole = "PROPERTY_MANAGER";
             if (!user.getRole().name().equals(requestedRole)) throw new IllegalArgumentException("This account uses a different role");
         }
         if ("Blocked".equalsIgnoreCase(user.getStatus())) {

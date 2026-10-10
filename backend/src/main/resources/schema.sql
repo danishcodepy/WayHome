@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS property (
     furnishing    VARCHAR(100),
     deposit       DOUBLE,
     maintenance   DOUBLE,
-    image_url     VARCHAR(500),
+    image_url     LONGTEXT,
     latitude      DOUBLE,
     longitude     DOUBLE,
     description   LONGTEXT,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS property_custom_field (
 CREATE TABLE IF NOT EXISTS property_image (
     id           BIGINT AUTO_INCREMENT PRIMARY KEY,
     property_id  BIGINT NOT NULL,
-    image_url    VARCHAR(500),
+    image_url    LONGTEXT,
     CONSTRAINT fk_image_property FOREIGN KEY (property_id) REFERENCES property (id)
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS student_accommodation (
     rent_monthly   DOUBLE,
     room_type      VARCHAR(100),
     furnishing     VARCHAR(100),
-    image_url      VARCHAR(500),
+    image_url      LONGTEXT,
     latitude       DOUBLE,
     longitude      DOUBLE,
     description    LONGTEXT,

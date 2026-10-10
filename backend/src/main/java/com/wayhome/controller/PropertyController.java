@@ -76,13 +76,14 @@ public class PropertyController {
         return ResponseEntity.ok(propertyService.reject(id, reason, actor.getId()));
     }
 
-    @GetMapping("/owner/{ownerId}")
-    public ResponseEntity<?> listByOwner(@PathVariable Long ownerId, Authentication authentication) {
+    @GetMapping({"/owner", "/owner/{ownerId}"})
+    public ResponseEntity<?> listByOwner(@PathVariable(required = false) Long ownerId, Authentication authentication) {
         User actor = (User) authentication.getPrincipal();
-        if (!actor.getId().equals(ownerId) && actor.getRole() != Role.ADMIN) {
+        Long targetOwnerId = (ownerId != null) ? ownerId : actor.getId();
+        if (!actor.getId().equals(targetOwnerId) && actor.getRole() != Role.ADMIN) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
         }
-        return ResponseEntity.ok(propertyService.listByOwner(ownerId));
+        return ResponseEntity.ok(propertyService.listByOwner(targetOwnerId));
     }
 
     @DeleteMapping("/{id}")
