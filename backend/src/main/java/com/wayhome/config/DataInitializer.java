@@ -54,6 +54,13 @@ public class DataInitializer implements CommandLineRunner {
                 "+91 98110 00001"
         );
 
+        User danishAdmin = getOrCreateUser(
+                "Danish Ahmad",
+                "danishahamd3773@gmail.com",
+                Role.ADMIN,
+                "+91 98110 00000"
+        );
+
         User manager = getOrCreateUser(
                 "Rohit Sharma",
                 "rohit.sharma@example.com",
@@ -1021,7 +1028,12 @@ public class DataInitializer implements CommandLineRunner {
         Optional<User> existing = userRepository.findByEmail(email);
 
         if (existing.isPresent()) {
-            return existing.get();
+            User u = existing.get();
+            if (role == Role.ADMIN && u.getRole() != Role.ADMIN) {
+                u.setRole(Role.ADMIN);
+                return userRepository.save(u);
+            }
+            return u;
         }
 
         User user = User.builder()
