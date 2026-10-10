@@ -3,7 +3,9 @@ package com.wayhome.controller;
 import com.wayhome.dto.AuthResponse;
 import com.wayhome.dto.LoginRequest;
 import com.wayhome.dto.RegisterRequest;
+import com.wayhome.dto.SendOtpRequest;
 import com.wayhome.service.AuthService;
+import com.wayhome.service.OtpService;
 import com.wayhome.service.PasswordResetService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,12 +20,29 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
+    private final OtpService otpService;
     private final PasswordResetService passwordResetService;
+
+    @PostMapping("/register/send-otp")
+    public ResponseEntity<?> sendRegisterOtp(@Valid @RequestBody SendOtpRequest request) {
+        try {
+            return ResponseEntity.ok(otpService.sendRegistrationOtp(request.getEmail()));
+        } catch (IllegalArgumentException e) {
+            String msg = e.getMessage();
+            if (msg != null && msg.startsWith("Please wait")) {
+                return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(Map.of("message", msg));
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", msg != null ? msg : "Invalid request."));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", e.getMessage() != null ? e.getMessage() : "Failed to send verification email."));
+        }
+    }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
         try { return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(request)); }
-        catch (IllegalArgumentException e) { return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); }
+        catch (IllegalArgumentException e) { return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", e.getMessage())); }
     }
 
     @PostMapping("/login")

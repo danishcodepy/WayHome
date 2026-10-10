@@ -23,4 +23,7 @@ public class RegisterRequest {
     /** ADMIN / PROPERTY_MANAGER / TENANT / STUDENT */
     @NotBlank
     private String role;
+
+    @NotBlank(message = "Verification code is required")
+    private String otp;
 }

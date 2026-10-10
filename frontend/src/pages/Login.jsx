@@ -9,9 +9,11 @@ import {
   GraduationCap,
   Home,
   ShieldCheck,
+  Mail,
 } from 'lucide-react';
 
 import AuthLayout from '../components/AuthLayout';
+import EmailOtpLogin from '../components/EmailOtpLogin';
 import { useAuth } from '../context/AuthContext';
 import { api, isDemo } from '../services/api';
 
@@ -54,6 +56,9 @@ export default function Login() {
   const [remember, setRemember] = useState(true);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
+
+  /** Controls whether the OTP flow is shown instead of the password form. */
+  const [otpMode, setOtpMode] = useState(false);
 
   const roles = [
     {
@@ -212,6 +217,14 @@ export default function Login() {
         </p>
       </div>
 
+      {/* ── OTP MODE or PASSWORD FORM ── */}
+      {otpMode ? (
+        <EmailOtpLogin
+          remember={remember}
+          onBack={() => setOtpMode(false)}
+        />
+      ) : (
+        <>
       {/* LOGIN FORM */}
       <form
         className="premium-form"
@@ -335,6 +348,17 @@ export default function Login() {
         </button>
       </div>
 
+          {/* Email OTP login option */}
+          <button
+            id="otp-mode-btn"
+            type="button"
+            className="otp-trigger-btn"
+            onClick={() => { setOtpMode(true); setError(''); }}
+          >
+            <Mail size={16} />
+            Login with Email OTP
+          </button>
+
       <p className="auth-unavailable">
         Social sign-in is not connected in this preview.
       </p>
@@ -389,6 +413,8 @@ export default function Login() {
             ))}
           </div>
         </details>
+      )}
+        </>
       )}
     </AuthLayout>
   );

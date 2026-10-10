@@ -19,13 +19,17 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
+    private final OtpService otpService;
 
-    /** Creates a new account; throws if the email is already registered. */
+    /** Creates a new account; throws if the email is already registered or OTP is invalid. */
     public AuthResponse register(RegisterRequest req) {
         String email = req.getEmail().trim().toLowerCase();
         if (userRepository.existsByEmail(email)) {
             throw new IllegalArgumentException("Email already registered");
         }
+
+        // Verify registration OTP
+        otpService.verifyRegistrationOtp(email, req.getOtp());
         Role role;
         try {
             role = Role.valueOf(req.getRole().trim().replace(' ', '_').toUpperCase());

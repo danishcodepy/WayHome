@@ -324,3 +324,176 @@
   color:var(--accent)
 }
 
+/* ── Email OTP trigger button ──────────────────────────────────── */
+.otp-trigger-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  padding:10px 14px;
+  margin-top:10px;
+  border:1.5px solid #d1d9e6;
+  border-radius:9px;
+  background:#ffffff;
+  color:var(--text);
+  font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+  transition:border-color .18s, background .18s, box-shadow .18s
+}
+
+.otp-trigger-btn:hover {
+  border-color:#93b6fa;
+  background:#f7faff;
+  box-shadow:0 0 0 3px #155eef0a
+}
+
+/* ── OTP flow container ────────────────────────────────────────── */
+.otp-flow {
+  display:flex;
+  flex-direction:column;
+  gap:0
+}
+
+.otp-flow__header {
+  text-align:center;
+  margin-bottom:22px
+}
+
+.otp-flow__icon {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#eff5ff;
+  color:#1251e8;
+  margin-bottom:14px
+}
+
+.otp-flow__icon--success {
+  background:#e8f5e9;
+  color:#2e7d32
+}
+
+.otp-flow__title {
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:6px;
+  color:var(--text)
+}
+
+.otp-flow__subtitle {
+  font-size:13px;
+  color:var(--subtle);
+  line-height:1.5
+}
+
+.otp-flow__email-display {
+  color:var(--text);
+  word-break:break-all
+}
+
+/* ── Six OTP input boxes ───────────────────────────────────────── */
+.otp-boxes {
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:4px
+}
+
+.otp-box {
+  width:44px;
+  height:52px;
+  border:1.5px solid #d1d9e6;
+  border-radius:10px;
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  color:var(--text);
+  background:#fff;
+  caret-color:var(--accent);
+  transition:border-color .15s, box-shadow .15s;
+  -moz-appearance:textfield
+}
+
+.otp-box::-webkit-outer-spin-button,
+.otp-box::-webkit-inner-spin-button {
+  -webkit-appearance:none;
+  margin:0
+}
+
+.otp-box:focus {
+  border-color:#93b6fa;
+  outline:none;
+  box-shadow:0 0 0 3px #155eef0f
+}
+
+.otp-box--filled {
+  border-color:#4a8ff7;
+  background:#f7faff
+}
+
+/* ── Resend section ────────────────────────────────────────────── */
+.otp-flow__resend {
+  text-align:center;
+  margin-top:14px
+}
+
+.otp-flow__cooldown {
+  font-size:12px;
+  color:var(--subtle)
+}
+
+.otp-flow__resend-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  color:var(--accent);
+  font-weight:500;
+  cursor:pointer;
+  background:transparent;
+  border:none
+}
+
+.otp-flow__resend-btn:hover {
+  text-decoration:underline
+}
+
+.otp-flow__resend-btn:disabled {
+  opacity:.5;
+  cursor:not-allowed
+}
+
+/* ── Back / change email link ──────────────────────────────────── */
+.otp-flow__back-link {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  color:var(--subtle);
+  margin-top:16px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  padding:0
+}
+
+.otp-flow__back-link:hover {
+  color:var(--text)
+}
+
+/* ── Form notice (success/info) ────────────────────────────────── */
+.form-notice {
+  font-size:12px;
+  color:#2e7d32;
+  background:#f1f8f1;
+  border:1px solid #c8e6c9;
+  border-radius:7px;
+  padding:9px 12px;
+  margin-bottom:4px
+}
+

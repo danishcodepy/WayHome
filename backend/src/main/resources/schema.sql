@@ -181,3 +181,18 @@ CREATE TABLE IF NOT EXISTS audit_log (
     timestamp    DATETIME,
     ip_address   VARCHAR(50)
 ) ENGINE=InnoDB;
+
+-- =========================================================
+-- OTP verification (passwordless Email-OTP login)
+-- =========================================================
+CREATE TABLE IF NOT EXISTS otp_verification (
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email       VARCHAR(320) NOT NULL,
+    otp_hash    VARCHAR(255) NOT NULL,
+    created_at  DATETIME(6) NOT NULL,
+    expires_at  DATETIME(6) NOT NULL,
+    attempts    INT          NOT NULL DEFAULT 0,
+    used        BIT(1)       NOT NULL DEFAULT b'0',
+    purpose     VARCHAR(30)  NOT NULL,
+    INDEX idx_otp_email_purpose (email, purpose)
+) ENGINE=InnoDB;

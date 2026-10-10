@@ -528,8 +528,25 @@ export const api = {
     return { id: `u-${Date.now()}`, name, email, role: role || 'Tenant', status: 'Active' };
   },
 
+  /** Send an email verification OTP for registration. */
+  sendRegisterOtp: async (email) => {
+    return request('/auth/register/send-otp', { method: 'POST', body: JSON.stringify({ email }) });
+  },
+
   register: async data => {
     const res = await request('/auth/register', { method: 'POST', body: JSON.stringify(data) });
     return res ? { ...res, role: normalizeRole(res.role) } : { ok: true };
+  },
+
+  /** Send a login OTP to the given email. */
+  sendOtp: async (email) => {
+    return request('/auth/otp/send', { method: 'POST', body: JSON.stringify({ email }) });
+  },
+
+  /** Verify a login OTP; returns the same shape as api.login on success. */
+  verifyOtp: async (email, otp) => {
+    const res = await request('/auth/otp/verify', { method: 'POST', body: JSON.stringify({ email, otp }) });
+    if (res) return { id: res.userId, name: res.name, email: res.email, role: normalizeRole(res.role), status: 'Active', token: res.token };
+    return null;
   },
 };
