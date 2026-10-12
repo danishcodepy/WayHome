@@ -1,6 +1,5 @@
 <p align="center">
-  <img src="docs/assets/wayhome-logo.png" alt="WayHome" width="110">
-</p>
+  <img src="docs/assets/wayhome-logo.png" alt="WayHome" width="110"></p>
 
 <h1 align="center">WayHome</h1>
 
