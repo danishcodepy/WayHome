@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/WayHome Animation.gif" alt="WayHome Animation" width="700">
+ <img src="docs/assets/wayhome-animation.gif" alt="WayHome Animation" width="700">
 </p>
 
 <h1 align="center">WayHome</h1>
