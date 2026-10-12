@@ -53,7 +53,7 @@ The platform is built around four user roles:
 ### Home Page
 
 <p align="center">
-  <img src="docs/assets/home-page.png" alt="WayHome Home Page" width="100%">
+  <img src="docs/assets/WayHome-Landingpage.gif" alt="WayHome Home Page" width="100%">
 </p>
 
 The home page provides a simple entry point for property discovery with rent, buy and PG/hostel search options.
