@@ -13,7 +13,12 @@
 </p>
 
 <p align="center">
-  <a href="https://wayhomelive.vercel.app/">Live Website</a>
+  <a href="https://wayhomelive.vercel.app/">
+    <img
+      src="https://img.shields.io/badge/🌐%20EXPLORE%20LIVE%20WEBSITE-2563EB?style=for-the-badge&labelColor=#FEF4E6"
+      alt="Explore Website"
+    />
+  </a>
 </p>
 
 <p align="center">
