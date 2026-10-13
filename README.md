@@ -566,11 +566,3 @@ The platform combines **property discovery, student accommodation, role-based au
 
 ---
 
-<p align="center">
-  <img src="docs/assets/wayhome-logo.png" alt="WayHome Logo" width="65">
-</p>
-
-<p align="center">
-  <strong>WayHome</strong><br>
-  Better places. Brighter futures.
-</p>
