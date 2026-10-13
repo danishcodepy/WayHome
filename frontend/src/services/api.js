@@ -287,14 +287,24 @@ async function request(path, options = {}) {
     window.dispatchEvent(new CustomEvent('reh-auth-expired'));
   }
 
+  // 403 with a token almost always means the token is expired or the role changed.
+  // Fire the forbidden event so AuthContext clears the stale session automatically.
+  if (res.status === 403 && token) {
+    window.dispatchEvent(new CustomEvent('reh-auth-forbidden'));
+  }
+
   const contentType = res.headers.get('content-type') || '';
   const payload = res.status === 204 ? null : contentType.includes('application/json') ? await res.json() : await res.text();
   if (!res.ok) {
-    const message = typeof payload === 'string' ? payload : payload?.message || payload?.error;
+    let message = typeof payload === 'string' ? payload : payload?.message || payload?.error;
+    if (!message && res.status === 403) {
+      message = 'Your session has expired or you do not have permission. Please sign in again.';
+    }
     throw new Error(message || `Request failed (${res.status}). Please try again.`);
   }
   return payload == null || payload === '' ? { ok: true } : payload;
 }
+
 
 function query(params) {
   const search = new URLSearchParams();

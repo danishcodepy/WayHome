@@ -52,6 +52,15 @@ public class SecurityConfig {
                 // Do not create server sessions
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
+                // Return 401 Unauthorized for unauthenticated / expired tokens (instead of default 403)
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.setStatus(jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED);
+                            response.setContentType("application/json");
+                            response.getWriter().write("{\"error\":\"Unauthorized\",\"message\":\"Authentication required or token expired. Please sign in again.\"}");
+                        })
+                )
+
                 .authorizeHttpRequests(auth -> auth
 
                         // -----------------------------
