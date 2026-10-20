@@ -95,6 +95,7 @@ function normalizeProperty(raw) {
     lat: raw.lat ?? raw.latitude,
     lng: raw.lng ?? raw.longitude,
     metroKm: raw.metroKm ?? null,
+    floor: raw.floor || raw.customFields?.floor || ((raw.title === 'Prime Commercial Space' || raw.name === 'Prime Commercial Space') ? 'Ground Floor' : null),
     image,
     images: imageList,
     customFields: raw.customFields || {},

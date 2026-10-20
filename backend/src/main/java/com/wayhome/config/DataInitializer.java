@@ -91,6 +91,112 @@ public class DataInitializer implements CommandLineRunner {
         List<PropertySeed> properties = List.of(
 
                 // =========================
+                // FEATURED MARKETPLACE CARDS
+                // =========================
+
+                new PropertySeed(
+                        "Modern 2 BHK Apartment",
+                        "Apartment",
+                        "Gurugram",
+                        "Haryana",
+                        "Gurugram, Haryana",
+                        35000,
+                        2,
+                        2,
+                        1250,
+                        28.4595,
+                        77.0266,
+                        "Family",
+                        "2 BHK",
+                        "/assets/properties/card-01.jpg"
+                ),
+
+                new PropertySeed(
+                        "Premium 3 BHK Residence",
+                        "Apartment",
+                        "Noida",
+                        "Uttar Pradesh",
+                        "Noida, Uttar Pradesh",
+                        48000,
+                        3,
+                        2,
+                        1650,
+                        28.5355,
+                        77.3910,
+                        "Family",
+                        "3 BHK",
+                        "/assets/properties/card-02.jpg"
+                ),
+
+                new PropertySeed(
+                        "Contemporary Family Villa",
+                        "Villa",
+                        "Greater Noida",
+                        "Uttar Pradesh",
+                        "Greater Noida, Uttar Pradesh",
+                        72000,
+                        4,
+                        3,
+                        2400,
+                        28.4744,
+                        77.5040,
+                        "Family",
+                        "Villa",
+                        "/assets/properties/card-03.jpg"
+                ),
+
+                new PropertySeed(
+                        "Spacious 3 BHK Family Home",
+                        "House",
+                        "Delhi",
+                        "India",
+                        "Delhi, India",
+                        55000,
+                        3,
+                        2,
+                        1850,
+                        28.6139,
+                        77.2090,
+                        "Family",
+                        "3 BHK",
+                        "/assets/properties/card-04.jpg"
+                ),
+
+                new PropertySeed(
+                        "Modern 2 BHK City Apartment",
+                        "Apartment",
+                        "Gurugram",
+                        "Haryana",
+                        "Gurugram, Haryana",
+                        32000,
+                        2,
+                        2,
+                        1100,
+                        28.4720,
+                        77.0420,
+                        "Professionals",
+                        "2 BHK",
+                        "/assets/properties/card-05.jpg"
+                ),
+
+                new PropertySeed(
+                        "Prime Commercial Space",
+                        "Commercial",
+                        "Noida",
+                        "Uttar Pradesh",
+                        "Noida, Uttar Pradesh",
+                        85000,
+                        0,
+                        0,
+                        1800,
+                        28.5700,
+                        77.3200,
+                        "Businesses",
+                        "Commercial",
+                        "/assets/properties/card-06.jpg"
+                ),
+
+                // =========================
                 // NOIDA PG
                 // =========================
 
@@ -851,12 +957,20 @@ public class DataInitializer implements CommandLineRunner {
                     + "Please verify current availability, pricing and ownership before making any real enquiry."
             );
 
-            property.setFurnishing(
-                    p.type().equalsIgnoreCase("PG")
-                            || p.type().equalsIgnoreCase("Hostel")
-                            ? "Fully Furnished"
-                            : "Semi Furnished"
-            );
+            if (p.title().equals("Prime Commercial Space")) {
+                property.setFurnishing("Ready to Use");
+            } else if (p.title().equals("Premium 3 BHK Residence") || p.title().equals("Spacious 3 BHK Family Home")) {
+                property.setFurnishing("Semi-Furnished");
+            } else if (p.title().equals("Modern 2 BHK Apartment") || p.title().equals("Contemporary Family Villa") || p.title().equals("Modern 2 BHK City Apartment")) {
+                property.setFurnishing("Furnished");
+            } else {
+                property.setFurnishing(
+                        p.type().equalsIgnoreCase("PG")
+                                || p.type().equalsIgnoreCase("Hostel")
+                                ? "Fully Furnished"
+                                : "Semi Furnished"
+                );
+            }
 
             property.setDeposit(p.rent());
 

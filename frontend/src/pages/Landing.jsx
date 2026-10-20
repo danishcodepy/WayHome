@@ -38,9 +38,17 @@ export default function Landing() {
   const reduced = useReducedMotion();
   useEffect(() => { let live = true; api.getProperties().then(data => { if (live && data?.length) setProperties(data); }).catch(() => {}); return () => { live = false; }; }, []);
   const approved = properties.filter(p => p.status === 'Approved' && p.listingFor !== 'buy');
-  const order = ['p1', 'p3', 'p10', 'p11', 'p9', 'p8'];
+  const targetFeaturedNames = [
+    'Modern 2 BHK Apartment',
+    'Premium 3 BHK Residence',
+    'Contemporary Family Villa',
+    'Spacious 3 BHK Family Home',
+    'Modern 2 BHK City Apartment',
+    'Prime Commercial Space',
+  ];
+  const matchedFeatured = targetFeaturedNames.map(name => properties.find(p => (p.name || p.title) === name)).filter(Boolean);
   const featured = (type === 'All properties'
-    ? (isDemo ? order.map(id => approved.find(p => p.id === id)).filter(Boolean) : approved.slice(0, 6))
+    ? (matchedFeatured.length === 6 ? matchedFeatured : demoProperties.slice(0, 6))
     : approved.filter(p => type === 'Student housing' ? ['PG', 'Hostel'].includes(p.type) : p.type === type)
   ).slice(0, 6);
 

@@ -4,7 +4,7 @@ import Popover from './Popover';
 import { formatPrice, listingPrice, priceRangeLabel } from '../utils/price';
 export function PriceDisplay({ property, amount, mode, className = 'home-price', suffix = true }) {
   const purpose = mode || property?.listingFor || 'rent';
-  return <p className={`${className} price-display price-display--${purpose}`} data-price-kind={purpose}><strong>{formatPrice(amount ?? listingPrice(property), { mode: purpose })}</strong>{suffix && <span>{purpose === 'buy' ? ' asking price' : ' /month'}</span>}</p>;
+  return <p className={`${className} price-display price-display--${purpose}`} data-price-kind={purpose}><strong>{formatPrice(amount ?? listingPrice(property), { mode: purpose })}</strong>{suffix && <span>{purpose === 'buy' ? ' asking price' : ' / month'}</span>}</p>;
 }
 export function PriceInput({ label, value, onChange, min = 0, max, required = false, disabled = false, placeholder = '0' }) {
   return <label className="ui-price-input"><span>{label}</span><div><IndianRupee size={16}/><input aria-label={label} type="number" inputMode="numeric" min={min} max={max} value={value} onChange={e => onChange(e.target.value)} required={required} disabled={disabled} placeholder={placeholder}/></div></label>;
