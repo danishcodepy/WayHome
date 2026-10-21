@@ -8,7 +8,7 @@
   <strong>A modern real-estate and student-accommodation platform.</strong>
 </p>
 
-<p align="center"> 
+<p align="center">
   Discover properties • Search by location • Apply • List • Review • Manage
 </p>
 
