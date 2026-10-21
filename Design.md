@@ -10,7 +10,7 @@ Target qualities:
 - Practical
 - Premium but not over-designed
 - Information-rich where users are evaluating properties
-- Easy to scan
+- Easy scan 
 - Mobile-friendly
 
 The existing approved WayHome visual language should be preserved when making incremental changes.
