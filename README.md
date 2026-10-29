@@ -163,12 +163,12 @@ Verified      Rejection
   = true       Reason
     │
     ▼
-Public Website
+ Public Website
 ```
 
 ### Listing Status
 
-| Status | Meaning | Public visibility |
+| Status | Meaning | Public visibility 
 |---|---|---|
 | 🟡 **PENDING** | Waiting for admin review | Hidden |
 | 🟢 **APPROVED** | Approved and verified | Visible |
