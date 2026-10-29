@@ -15,10 +15,10 @@ import { useAuth } from '../context/AuthContext';
 
 
 const TRUST = [
-  [ShieldCheck, 'Verified Listings', 'Trusted property details'],
-  [GraduationCap, 'Student Friendly', 'Near universities'],
-  [MapPin, 'Prime Locations', 'Explore the neighbourhood'],
-  [BriefcaseBusiness, 'Easy Applications', 'A simpler way to move']
+  [ShieldCheck, 'Verified Listings', 'Trusted properties'],
+  [MapPin, 'Prime Locations', 'Top neighbourhoods'],
+  [House, 'Multiple Options', 'Apartments, houses, villas'],
+  [GraduationCap, 'Student Housing', 'Near universities', '/student-housing']
 ];
 
 const heroCopyVariants = {
@@ -112,17 +112,30 @@ export default function Landing() {
           </div>
 
           <div className="trust-strip page-width" aria-label="Why WayHome">
-            {TRUST.map(([Icon, title, text], index) => (
-              <motion.div
-                key={title}
-                initial={reduced ? false : { opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.42 + index * 0.06 }}
-              >
-                <span className="trust-icon"><Icon size={22} strokeWidth={1.7} /></span>
-                <p><strong>{title}</strong><span>{text}</span></p>
-              </motion.div>
-            ))}
+            {TRUST.map(([Icon, title, text, link], index) => {
+              const content = (
+                <>
+                  <span className="trust-icon"><Icon size={20} strokeWidth={1.8} /></span>
+                  <p><strong>{title}</strong><span>{text}</span></p>
+                </>
+              );
+              return (
+                <motion.div
+                  key={title}
+                  initial={reduced ? false : { opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.42 + index * 0.06 }}
+                >
+                  {link ? (
+                    <Link to={link} className="trust-strip-link" aria-label={`${title} - ${text}`}>
+                      {content}
+                    </Link>
+                  ) : (
+                    content
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </section>
 

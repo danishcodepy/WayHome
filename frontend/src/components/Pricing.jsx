@@ -25,5 +25,5 @@ function BudgetContents({ min, max, onChange, close, mode, student }) {
   return <><PriceRange {...draft} onChange={setDraft} mode={mode} student={student}/><div className="popover-actions"><button type="button" className="text-link" onClick={() => setDraft({ min: 0, max: 0 })}>Reset</button><button type="button" className="primary-button" onClick={() => { onChange(draft); close(); }}>Apply budget</button></div></>;
 }
 export function BudgetPopover({ min = 0, max = 0, onChange, mode = 'rent', student = false, label = 'Budget', className = '' }) {
-  return <Popover label={label} display={priceRangeLabel(min, max, mode)} icon={IndianRupee} active={!!min || !!max} className={className}>{close => <BudgetContents min={min} max={max} onChange={onChange} close={close} mode={mode} student={student}/>}</Popover>;
+  return <Popover label={label} display={(!min && !max) ? label : priceRangeLabel(min, max, mode)} icon={IndianRupee} active={!!min || !!max} className={className}>{close => <BudgetContents min={min} max={max} onChange={onChange} close={close} mode={mode} student={student}/>}</Popover>;
 }

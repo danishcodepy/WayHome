@@ -138,7 +138,7 @@ export default function SmartAssistant() {
       </AnimatePresence>
 
       <motion.button type="button" className={`assistant-launcher ${open ? 'is-open' : ''}`} onClick={() => setOpen(value => !value)} whileHover={reduced ? undefined : { y: -2 }} whileTap={reduced ? undefined : { scale: 0.96 }} aria-expanded={open} aria-label={open ? 'Close WayHome Assistant' : 'Open WayHome Assistant'}>
-        {open ? <X size={21} /> : <><MessageCircle size={20} /><span>Ask WayHome</span></>}
+        {open ? <X size={22} /> : <><MessageCircle size={22} className="assistant-launcher-icon" /><span className="assistant-launcher-text">Ask WayHome</span></>}
       </motion.button>
     </>
   );
